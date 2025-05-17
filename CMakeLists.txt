@@ -3,4 +3,13 @@ project(Banking_Application)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Banking_Application main.cpp)
+# Add include directory for header resolution
+include_directories(include)
+
+# Add all source files here
+add_executable(Banking_Application
+        main.cpp
+        src/Account.cpp
+        src/SavingsAccount.cpp
+        src/CurrentAccount.cpp
+)
