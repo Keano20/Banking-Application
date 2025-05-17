@@ -5,6 +5,7 @@
 #include <memory>
 #include "Account.h"
 
+// Implements the Singleton Pattern
 class BankManager {
 private: // Private by default but I thought it would still be useful to show
     std::vector<std::shared_ptr<Account>> accounts;

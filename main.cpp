@@ -38,8 +38,8 @@ int main() {
                 std::cout << "Enter initial balance: £";
                 std::cin >> initialBalance;
                 manager.createAccount(type, name, initialBalance);
-                waitForEnter();
                 manager.showAccounts();
+                waitForEnter();
                 break;
             }
             case 2: {
@@ -52,6 +52,7 @@ int main() {
                 if (!manager.depositToAccount(id, amount)) {
                     std::cout << "Deposit failed.\n";
                 }
+                waitForEnter();
                 break;
             }
             case 3: {
@@ -64,10 +65,12 @@ int main() {
                 if (!manager.withdrawFromAccount(id, amount)) {
                     std::cout << "Withdrawal failed.\n";
                 }
+                waitForEnter();
                 break;
             }
             case 4:
                 manager.applyInterestToAllAccounts();
+                waitForEnter();
                 break;
             case 5:
                 manager.showAccounts();
