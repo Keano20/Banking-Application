@@ -1,13 +1,9 @@
-//
-// Created by keano ricketts on 17/05/2025.
-//
-
 #ifndef SAVINGSACCOUNT_H
 #define SAVINGSACCOUNT_H
+#include <Account.h>
 
 
-
-class SavingsAccount {
+class SavingsAccount : public Account {
 
 };
 

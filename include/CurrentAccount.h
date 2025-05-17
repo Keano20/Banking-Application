@@ -1,13 +1,9 @@
-//
-// Created by keano ricketts on 17/05/2025.
-//
-
 #ifndef CURRENTACCOUNT_H
 #define CURRENTACCOUNT_H
+#include <Account.h>
 
 
-
-class CurrentAccount {
+class CurrentAccount : public Account {
 
 };
 
