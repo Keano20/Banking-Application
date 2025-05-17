@@ -12,4 +12,5 @@ add_executable(Banking_Application
         src/Account.cpp
         src/SavingsAccount.cpp
         src/CurrentAccount.cpp
+        src/AccountFactory.cpp
 )
