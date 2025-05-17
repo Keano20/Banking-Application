@@ -1,47 +1,86 @@
 #include <iostream>
-#include <memory>
 #include "BankManager.h"
+
+void showMenu() {
+    std::cout << "\n======= Bank Menu =======\n";
+    std::cout << "1. Create Account\n";
+    std::cout << "2. Deposit\n";
+    std::cout << "3. Withdraw\n";
+    std::cout << "4. Apply Interest\n";
+    std::cout << "5. View All Accounts\n";
+    std::cout << "6. Exit\n";
+    std::cout << "=========================\n";
+    std::cout << "Select an option: ";
+}
+void waitForEnter() {
+    std::cout << "\nPress Enter to continue...";
+    std::cin.ignore();
+    std::cin.get();
+}
 
 int main() {
     BankManager& manager = BankManager::getInstance();
+    bool running = true;
 
-    std::cout << "Creating accounts...\n";
+    while (running) {
+        showMenu();
+        int choice;
+        std::cin >> choice;
 
-    manager.createAccount("savings", "Keano", 100.0f);
-    manager.createAccount("current", "Jan", 500000.0f);
-    manager.createAccount("savings", "Joe", 12000.0f);
-    manager.createAccount("current", "Ahmed", 800.0f);
-    manager.createAccount("savings", "Ethan", 550.0f);
-
-    std::cout << "\nDepositing £200 to account ID 1...\n";
-    if (!manager.depositToAccount(1, 200.0f)) {
-        std::cout << "Deposit failed.\n";
+        switch (choice) {
+            case 1: {
+                std::string type, name;
+                float initialBalance;
+                std::cout << "Enter account type (savings/current): ";
+                std::cin >> type;
+                std::cout << "Enter account holder name: ";
+                std::cin >> name;
+                std::cout << "Enter initial balance: £";
+                std::cin >> initialBalance;
+                manager.createAccount(type, name, initialBalance);
+                waitForEnter();
+                manager.showAccounts();
+                break;
+            }
+            case 2: {
+                int id;
+                float amount;
+                std::cout << "Enter account ID to deposit to: ";
+                std::cin >> id;
+                std::cout << "Enter amount to deposit: £";
+                std::cin >> amount;
+                if (!manager.depositToAccount(id, amount)) {
+                    std::cout << "Deposit failed.\n";
+                }
+                break;
+            }
+            case 3: {
+                int id;
+                float amount;
+                std::cout << "Enter account ID to withdraw from: ";
+                std::cin >> id;
+                std::cout << "Enter amount to withdraw: £";
+                std::cin >> amount;
+                if (!manager.withdrawFromAccount(id, amount)) {
+                    std::cout << "Withdrawal failed.\n";
+                }
+                break;
+            }
+            case 4:
+                manager.applyInterestToAllAccounts();
+                break;
+            case 5:
+                manager.showAccounts();
+                waitForEnter();
+                break;
+            case 6:
+                std::cout << "Exiting...\n";
+                running = false;
+                break;
+            default:
+                std::cout << "Invalid option. Please try again.\n";
+        }
     }
-
-    std::cout << "Withdrawing £125000 from account ID 2...\n";
-    if (!manager.withdrawFromAccount(2, 125000.0f)) {
-        std::cout << "Withdrawal failed.\n";
-    }
-
-    std::cout << "Depositing £150 to account ID 3...\n";
-    if (!manager.depositToAccount(3, 150.0f)) {
-        std::cout << "Deposit failed.\n";
-    }
-
-    std::cout << "Withdrawing £75 from account ID 4...\n";
-    if (!manager.withdrawFromAccount(4, 75.0f)) {
-        std::cout << "Withdrawal failed.\n";
-    }
-
-    std::cout << "Depositing £100 to account ID 5...\n";
-    if (!manager.depositToAccount(5, 100.0f)) {
-        std::cout << "Deposit failed.\n";
-    }
-
-    manager.applyInterestToAllAccounts();
-
-    std::cout << "\nFinal Account Summary:\n";
-    manager.showAccounts();
 
     return 0;
 }
