@@ -24,6 +24,7 @@ public:
     // Methods
     void createAccount(const std::string& type, const std::string& owner, float initialBalance);
     void showAccounts() const;
+    void applyInterestToAllAccounts();
     bool depositToAccount(int accountId, float amount);
     bool withdrawFromAccount(int accountId, float amount);
 };

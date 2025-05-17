@@ -47,3 +47,10 @@ bool BankManager::withdrawFromAccount(int accountId, float amount) {
     }
     return false;
 }
+
+void BankManager::applyInterestToAllAccounts() {
+    std::cout << "\nApplying interest to all accounts...\n";
+    for (const auto& acc : accounts) {
+        acc->calculateInterest();
+    }
+}
