@@ -1,12 +1,17 @@
 #ifndef TRANSACTIONLOGGER_H
 #define TRANSACTIONLOGGER_H
 
+#include "interface/Observer.h"
+#include <vector>
+#include <string>
 
-// (Currently this class is unused, but will be part of a future update to the application)
-class TransactionLogger {
+class TransactionLogger : public Observer {
+    private:
+      std::vector<std::string> logs;
 
+    public:
+      void notify(const std::string& message) override;
+      void showLogs() const;
 };
-
-
 
 #endif //TRANSACTIONLOGGER_H

@@ -4,12 +4,14 @@
 #include <vector>
 #include <memory>
 #include "Account.h"
+#include "interface/Observer.h"
 
 // Implements the Singleton Pattern
 class BankManager {
 private: // Private by default but I thought it would still be useful to show
     std::vector<std::shared_ptr<Account>> accounts;
     int nextAccountId = 1;
+    Observer* logger = nullptr;
 
     // Private constructor for singleton
     BankManager() = default;
@@ -28,6 +30,7 @@ public:
     void applyInterestToAllAccounts();
     bool depositToAccount(int accountId, float amount);
     bool withdrawFromAccount(int accountId, float amount);
+    void registerObserver(Observer* obs);
 };
 
 #endif //BANKMANAGER_H
