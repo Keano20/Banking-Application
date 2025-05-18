@@ -27,3 +27,24 @@ Implemented in `BankManager` to ensure a single point of control for all account
 The `TransactionLogger` observes account operations and logs events such as deposits, withdrawals, and interest applications.
 
 ---
+## 🖥️ How to Run
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/Keano20/Banking-Application.git
+cd Banking-Application
+```
+
+2. **Build with CMake**
+
+```bash
+cmake -B build
+cmake --build build
+```
+
+3. **Run The application**
+
+```bash
+./build/Banking_Application
+```
