@@ -26,7 +26,7 @@ class Account {
     // Removes fund from the account but only if a sufficient balance is available
     bool withdraw(float amount);
 
-    // Get methods (Accesors)
+    // Get methods (Accessors)
     float getBalance() const;
     int getId() const;
     std::string getOwnerName() const;
