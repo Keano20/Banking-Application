@@ -2,11 +2,13 @@
 #include "AccountFactory.h"
 #include <iostream>
 
+// Returns the singleton instance of BankManager
 BankManager& BankManager::getInstance() {
     static BankManager instance;
     return instance;
 }
 
+// Creates a new account using the factory and adds it to the list
 void BankManager::createAccount(const std::string& type, const std::string& owner, float initialBalance) {
     auto account = AccountFactory::createAccount(type, nextAccountId, owner, initialBalance);
     if (account) {
@@ -26,6 +28,7 @@ void BankManager::createAccount(const std::string& type, const std::string& owne
     }
 }
 
+// Displays details for all registered accounts
 void BankManager::showAccounts() const {
     std::cout << "\n--- Account Summary ---\n";
     for (const auto& acc : accounts) {
@@ -36,6 +39,7 @@ void BankManager::showAccounts() const {
     std::cout << "------------------------\n";
 }
 
+// Deposits an amount into the matching account
 bool BankManager::depositToAccount(int accountId, float amount) {
     for (const auto& acc : accounts) {
         if (acc->getId() == accountId) {
@@ -50,6 +54,7 @@ bool BankManager::depositToAccount(int accountId, float amount) {
     return false;
 }
 
+// Withdraws an amount from the matching account
 bool BankManager::withdrawFromAccount(int accountId, float amount) {
     for (const auto& acc : accounts) {
         if (acc->getId() == accountId) {
@@ -64,6 +69,7 @@ bool BankManager::withdrawFromAccount(int accountId, float amount) {
     return false;
 }
 
+// Applies interest to all accounts in the system
 void BankManager::applyInterestToAllAccounts() {
     std::cout << "\nApplying interest to all accounts...\n";
     for (const auto& acc : accounts) {
@@ -75,6 +81,7 @@ void BankManager::applyInterestToAllAccounts() {
     }
 }
 
+// Registers an observer for logging events
 void BankManager::registerObserver(Observer* obs) {
     logger = obs;
 }

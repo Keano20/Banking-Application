@@ -1,15 +1,15 @@
 #include "Account.h"
 
-// Constructor
+// Constructor to initialise common account data
 Account::Account(int id, const std::string& owner, float initialBalance)
     : accountId(id), ownerName(owner), balance(initialBalance) {}
 
-// Method for depositing money
+// Adds the given amount to the account balance
 void Account::deposit (float amount) {
     if (amount > 0) balance += amount;
 }
 
-// Method for withdrawing money
+// Deducts the given amount from the balance if sufficient funds exist
 bool Account::withdraw(float amount) {
     if (amount > 0 && balance >= amount) {
         balance -= amount;
@@ -18,7 +18,7 @@ bool Account::withdraw(float amount) {
     return false;
 }
 
-// Returns the account balance
+// Returns the current account balance
 float Account::getBalance() const {
     return balance;
 }

@@ -3,6 +3,7 @@
 #include "CurrentAccount.h"
 #include <algorithm>
 
+// Creates and returns a specific account type based on user input
 std::unique_ptr<Account> AccountFactory::createAccount(const std::string& type, int id, const std::string& owner, float initialBalance) {
   std::string lowercaseType = type;
   std::transform(lowercaseType.begin(), lowercaseType.end(), lowercaseType.begin(), ::tolower);
