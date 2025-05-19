@@ -5,9 +5,10 @@
 #include <string>
 #include "Account.h"
 
-// Implements Factory Pattern
+// Implements the Factory Pattern to create specific account types
 class AccountFactory {
   public:
+    // Returns a new Account object based on the given type
     static std::unique_ptr<Account> createAccount(const std::string& type, int id, const std::string& owner, float initialBalance);
 };
 
