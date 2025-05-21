@@ -61,7 +61,7 @@ int main() {
                 std::cout << "Enter account holder name: ";
                 std::cin >> name;
 
-                std::cout << "Enter initial balance: £";
+                std::cout << "Enter initial balance (GBP): ";
                 std::cin >> initialBalance;
 
                 // Validate balance input
@@ -86,7 +86,7 @@ int main() {
                 std::cout << "Enter account ID to deposit to: ";
                 std::cin >> id;
 
-                std::cout << "Enter amount to deposit: £";
+                std::cout << "Enter amount to deposit (GBP): ";
                 std::cin >> amount;
 
                 // Validate deposit input
@@ -113,7 +113,7 @@ int main() {
                 std::cout << "Enter account ID to withdraw from: ";
                 std::cin >> id;
 
-                std::cout << "Enter amount to withdraw: £";
+                std::cout << "Enter amount to withdraw (GBP): ";
                 std::cin >> amount;
 
                 // Validate withdrawal input

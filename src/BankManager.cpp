@@ -13,7 +13,7 @@ void BankManager::createAccount(const std::string& type, const std::string& owne
     auto account = AccountFactory::createAccount(type, nextAccountId, owner, initialBalance);
     if (account) {
         std::cout << "Created " << type << " account for " << owner
-                  << " with ID: " << nextAccountId << " and balance: £" << account->getBalance() << "\n";
+                  << " with ID: " << nextAccountId << " and balance (GBP): " << account->getBalance() << "\n";
 
         if (logger) {
             logger->notify("Created " + type + " account for " + owner + " (ID: " + std::to_string(nextAccountId) + ")");
@@ -34,7 +34,7 @@ void BankManager::showAccounts() const {
     for (const auto& acc : accounts) {
         std::cout << "ID: " << acc->getId()
                   << " | Owner: " << acc->getOwnerName()
-                  << " | Balance: £" << acc->getBalance() << "\n";
+                  << " | Balance (GBP): " << acc->getBalance() << "\n";
     }
     std::cout << "------------------------\n";
 }
@@ -46,7 +46,7 @@ bool BankManager::depositToAccount(int accountId, float amount) {
             acc->deposit(amount);
 
             if (logger) {
-                logger->notify("Deposited £" + std::to_string(amount) + " to account ID " + std::to_string(accountId));
+                logger->notify("Deposited (GBP): " + std::to_string(amount) + " to account ID " + std::to_string(accountId));
             }
             return true;
         }
@@ -61,7 +61,7 @@ bool BankManager::withdrawFromAccount(int accountId, float amount) {
             bool success = acc->withdraw(amount);
 
             if (success && logger) {
-                logger->notify("Withdrew £" + std::to_string(amount) + " from account ID " + std::to_string(accountId));
+                logger->notify("Withdrew (GBP): " + std::to_string(amount) + " from account ID " + std::to_string(accountId));
             }
             return success;
         }
