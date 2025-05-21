@@ -4,7 +4,7 @@ A modular, object-oriented C++ banking system that allows users to create and ma
 
 ---
 
-## NOTE for Windows users:
+## ❗️NOTE for Windows users:
 The £ symbol may not display properly in some terminals. For best results, use Windows terminal or run the app in a UTF-8-enabled environment. (Fix coming soon)
 
 ## 📦 Features
